@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KFSM Turnstile Immutable Demo</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container col-9">
+    <div class="row mt-4">
+        <div class="col-4">
+            <button id="coinButton" class="btn btn-primary btn-lg">Coin</button>
+            <button id="passButton" class="btn btn-primary btn-lg">Pass</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <span id="turnstileState" class="display-4"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <span id="turnstileMessage" class="display-4"></span>
+        </div>
+    </div>
+</div>
+<script type="module" src="kfsmwebjs.js"></script>
+<script type="application/javascript">
+    let { TurnstileInfo, TurnstileFSM } = kfsmwebjs.com.example.kfsm;
+    $(document).ready(function () {
+        function updateState(info) {
+            $("turnstileState").text(info.locked ? "Locked" : "Unlocked");
+            $("turnstileMessage").text(info.message);
+        }
+
+        let info = new TurnstileInfo();
+        updateState(info);
+        $('#coinButton').click(function () {
+            let fsm = new TurnstileFSM(info);
+            info = fsm.coin(info);
+            updateState(info);
+        });
+        $('#passButton').click(function () {
+            let fsm = new TurnstileFSM(info);
+            info = fsm.pass(info);
+            updateState(info);
+        });
+    });
+</script>
+</body>
+</html>
