@@ -28,7 +28,7 @@
 </div>
 <script type="module" src="kfsmwebjs.js"></script>
 <script type="application/javascript">
-    let { TurnstileInfo, TurnstileFSM } = kfsmwebjs.com.example.kfsm;
+    let { TurnstileInfo, TurnstileFSM } = kfsmweb;
     $(document).ready(function () {
         function updateState(info) {
             $("turnstileState").text(info.locked ? "Locked" : "Unlocked");
