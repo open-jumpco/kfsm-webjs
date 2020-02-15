@@ -28,31 +28,27 @@
 </div>
 <script src="kfsmwebjs.js"></script>
 <script type="application/javascript">
-    console.log(kfsmweb);
-    let { TurnstileInfo, TurnstileFSM } = kfsmweb.com.example.kfsm;
+    let {TurnstileInfo, TurnstileFSM} = kfsmweb.com.example.kfsm;
     let info = new TurnstileInfo();
     $(document).ready(function () {
+        let buttons = ["pass", "coin"];
         function updateState(info) {
             $("#turnstileState").text(info.locked ? "Locked" : "Unlocked");
             $("#turnstileMessage").text(info.message);
             let fsm = new TurnstileFSM(info);
-            let buttons = ["pass","coin"];
             buttons.forEach(function (button) {
                 $('#' + button + 'Button').prop('disabled', !fsm.allowed(button));
             });
         }
+        buttons.forEach(function (button) {
+            $('#' + button + 'Button').click(function () {
+                let fsm = new TurnstileFSM(info);
+                info = fsm.event(button, info);
+                updateState(info);
+            });
+        });
 
         updateState(info);
-        $('#coinButton').click(function () {
-            let fsm = new TurnstileFSM(info);
-            info = fsm.event("coin", info);
-            updateState(info);
-        });
-        $('#passButton').click(function () {
-            let fsm = new TurnstileFSM(info);
-            info = fsm.pass(info);
-            updateState(info);
-        });
     });
 </script>
 </body>
