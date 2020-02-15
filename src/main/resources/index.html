@@ -35,6 +35,11 @@
         function updateState(info) {
             $("#turnstileState").text(info.locked ? "Locked" : "Unlocked");
             $("#turnstileMessage").text(info.message);
+            let fsm = new TurnstileFSM(info);
+            let buttons = ["pass","coin"];
+            buttons.forEach(function (button) {
+                $('#' + button + 'Button').prop('disabled', !fsm.allowed(button));
+            });
         }
 
         updateState(info);

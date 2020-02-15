@@ -39,7 +39,9 @@ class TurnstileFSM(turnstile: TurnstileInfo) {
     @JsName("event")
     fun event(event: String, info: TurnstileInfo) = fsm.sendEvent(TurnstileEvent.valueOf(event.toUpperCase()), info)
     @JsName("allowed")
-    fun allowed(event: TurnstileEvent) = fsm.allowed().contains(event)
+    fun allowed(event: String) : Boolean {
+        return fsm.allowed().map { it.name.toLowerCase() }.toSet().contains(event)
+    }
 
     companion object {
         private val definition = stateMachine(
