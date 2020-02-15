@@ -32,10 +32,13 @@ enum class TurnstileState {
 
 class TurnstileFSM(turnstile: TurnstileInfo) {
     private val fsm = definition.create(turnstile)
-
+    @JsName("coin")
     fun coin(info: TurnstileInfo) = fsm.sendEvent(COIN, info)
+    @JsName("pass")
     fun pass(info: TurnstileInfo) = fsm.sendEvent(PASS, info)
+    @JsName("event")
     fun event(event: String, info: TurnstileInfo) = fsm.sendEvent(TurnstileEvent.valueOf(event.toUpperCase()), info)
+    @JsName("allowed")
     fun allowed(event: TurnstileEvent) = fsm.allowed().contains(event)
 
     companion object {
