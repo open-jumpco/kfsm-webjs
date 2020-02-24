@@ -1,0 +1,23 @@
+== TurnstileFSM State Chart
+
+=== TurnstileFSM State Map
+
+|===
+| Start | Event[Guard] | Target | Action
+
+| LOCKED
+| COIN
+| UNLOCKED
+|  `{info->require(info != null){"Info required"}info.update(locked=false)}`
+
+| UNLOCKED
+| PASS
+| LOCKED
+|  `{info->require(info != null){"Info required"}info.update(locked=true)}`
+
+| UNLOCKED
+| COIN
+| UNLOCKED
+|  `{info->require(info != null){"Info required"}info.update(message="Return Coin")}`
+|===
+
