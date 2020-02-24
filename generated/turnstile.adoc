@@ -8,16 +8,34 @@
 | LOCKED
 | COIN
 | UNLOCKED
-|  `{info->require(info != null){"Info required"}info.update(locked=false)}`
+a| [source,kotlin]
+----
+{info->
+require(info != null){"Info required"}
+info.update(locked=false)
+}
+----
 
 | UNLOCKED
 | PASS
 | LOCKED
-|  `{info->require(info != null){"Info required"}info.update(locked=true)}`
+a| [source,kotlin]
+----
+{info->
+require(info != null){"Info required"}
+info.update(locked=true)
+}
+----
 
 | UNLOCKED
 | COIN
 | UNLOCKED
-|  `{info->require(info != null){"Info required"}info.update(message="Return Coin")}`
+a| [source,kotlin]
+----
+{info->
+require(info != null){"Info required"}
+info.update(message="Return Coin")
+}
+----
 |===
 
