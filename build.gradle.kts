@@ -32,7 +32,7 @@ kotlin {
     }
     sourceSets["main"].dependencies {
         implementation(kotlin("stdlib-js"))
-        implementation("io.jumpco.open:kfsm-js:1.0.0")
+        implementation("io.jumpco.open:kfsm-js:1.0.1")
     }
 }
 tasks {
