@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 plugins {
     id("org.jetbrains.kotlin.js") version "1.3.61"
-    id("io.jumpco.open.kfsm.viz-plugin") version "1.0.7"
+    id("io.jumpco.open.kfsm.viz-plugin") version "1.0.9"
 }
 
 group = "org.example"
