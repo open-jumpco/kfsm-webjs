@@ -1,3 +1,3 @@
 config.output = config.output || {};
 config.output.libraryTarget = "umd";
-config.output.library = "kfsmweb";
+config.output.library = "kfsmwebjs";
