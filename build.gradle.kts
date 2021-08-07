@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 plugins {
-    id("org.jetbrains.kotlin.js") version "1.3.72"
-    id("io.jumpco.open.kfsm.viz-plugin") version "1.0.9"
+    id("org.jetbrains.kotlin.js") version "1.5.10"
+    id("io.jumpco.open.kfsm.viz-plugin") version "1.5.0"
 }
 
 group = "org.example"
@@ -24,8 +24,7 @@ kotlin {
         }
     }
     sourceSets["main"].dependencies {
-        implementation("io.jumpco.open:kfsm-js:1.0.3-SNAPSHOT")
-
+        implementation("io.jumpco.open:kfsm-js:1.5.1")
         implementation(kotlin("stdlib-js"))
     }
 }
